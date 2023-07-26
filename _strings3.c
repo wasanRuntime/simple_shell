@@ -1,6 +1,20 @@
 #include "main.h"
 
 /**
+ *ctrlc - Control C handler.
+ *@signum: The signal number received.
+ *
+ *Return: Void.
+ */
+void ctrlc(int signum)
+{
+	(void)signum;
+
+	exit(0);
+	write(STDOUT_FILENO, "\n#cisfun$ ", 10);
+}
+
+/**
  * is_delim - Check if char is equal to delim.
  * @c: character.
  * @delim: " "
@@ -21,7 +35,7 @@ int is_delim(char c, const char *delim)
 }
 
 /**
- * _strtok - Mimics strtok, which tokenizes a string and turn to array.
+ * _strtok - Mimics strtok, that tokenizes a string and turn to array.
  * @src: String from getline.
  * @delim: " ";
  * Return: Individual token in array format.
@@ -43,7 +57,6 @@ char *_strtok(char *src, const char *delim)
 				s[i] = '\0';
 		}
 	}
-
 	if (s == NULL || *s == '\0')
 		return (NULL);
 	result = s;
@@ -53,20 +66,6 @@ char *_strtok(char *src, const char *delim)
 	s = s + _strlen(s) + is_space;
 	return (result);
 }
-
-/**
- *ctrlc - Control C handler.
- *@signum: The signal number received.
- *
- *Return: Void.
- */
-void ctrlc(int signum)
-{
-	(void)signum;
-
-	write(STDOUT_FILENO, "\n#cisfun$ ", 10);
-}
-
 
 /**
  * get_line - Stores into malloced buffer the user's command into shell.
@@ -110,30 +109,4 @@ ssize_t get_line(char **str)
 		}
 	}
 	return (size);
-}
-/**
- *  _strdup - Duplicates string.
- *  @str: String to duplicate.
- *  Return: Pointer to duplicated string in allocated memory.
- */
-char *_strdup(char *str)
-{
-	char *duplicate_str;
-	int i, len = 0;
-
-	if (str == NULL)
-		return (NULL);
-	while (str[len])
-		len++;
-	len++; /* add null terminator to length */
-	duplicate_str = malloc(sizeof(char) * len);
-	if (duplicate_str == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		duplicate_str[i] = str[i];
-		i++;
-	}
-	return (duplicate_str);
 }
