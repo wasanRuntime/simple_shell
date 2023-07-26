@@ -1,6 +1,22 @@
 #include "main.h"
 
 /**
+ * _strlen - Returns length of a string.
+ * @s: Pointer to string.
+ * Return: Length of s.
+ */
+int _strlen(char *s)
+{
+	int index;
+
+	index = 0;
+	while (s[index] != '\0')
+	{
+		index++;
+	}
+	return (index);
+}
+/**
  * _strcat - Concatenates two strings.
  * @dest: Pointer to string to be conatenated upon.
  * @src: Pointer to string to append to dest.
@@ -23,6 +39,23 @@ char *_strcat(char *dest, char *src)
 	*destAddress = '\0';
 
 	return (dest);
+}
+
+/**
+ * _check_white_space - checks for white space.
+ * @s: Pointer to string to check.
+ * Return: integer.
+ */
+unsigned int _check_white_space(char *s)
+{
+	int i, count = 0;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i]  == ' ' || s[i] == '\t' || s[i] == '\n')
+			count++;
+	}
+	return (count);
 }
 
 /**
