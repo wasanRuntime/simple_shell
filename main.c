@@ -14,15 +14,12 @@ int main(int argc, char *argv[])
 	char **tokens;
 
 	(void)argc;
-
 	signal(SIGINT, ctrlc);
 
 	Status = 0;
-
 	while (Status == 0)
 	{
 		prompt();
-
 		line = read_line();
 		if (_strcmp(line, "\n") == 0)
 		{
@@ -30,7 +27,6 @@ int main(int argc, char *argv[])
 			free(line);
 			continue;
 		}
-
 		tokens = _strtotokens(line);
 		if (tokens[0] == NULL)
 		{
@@ -38,7 +34,6 @@ int main(int argc, char *argv[])
 			free(line);
 			continue;
 		}
-
 		if (_strcmp(tokens[0], "exit") == 0)
 		{
 			_exit_simple_shell(tokens, line);
@@ -47,7 +42,6 @@ int main(int argc, char *argv[])
 		{
 			Status =  _execute(tokens, argv[0]);
 		}
-
 		free(line);
 		free(tokens);
 	}
