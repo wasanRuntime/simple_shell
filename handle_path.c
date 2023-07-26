@@ -2,11 +2,11 @@
 
 
 /**
- * if_file_exists - Checks file status.
+ * _file_exist - Checks file status.
  * @s: Pointer to file name.
  * Return: 0 if success, else non zero.
  */
-int if_file_exists(char *s)
+int _file_exist(char *s)
 {
 	struct stat st;
 
@@ -15,11 +15,11 @@ int if_file_exists(char *s)
 
 
 /**
- * path_builder - Constructs a path to binaries.
+ * _build_path - Constructs a path to binaries.
  * @tokens: Double pointer to tokens.
  * Return: Return - path, else - NULL.
  */
-char *path_builder(char **tokens)
+char *_build_path(char **tokens)
 {
 	char path1[100] = "/bin/";
 	char path2[100] = "/usr/bin/";
@@ -29,11 +29,11 @@ char *path_builder(char **tokens)
 
 	finalPath1 = _strcat(path1, tokens[0]);
 
-	if ((if_file_exists(finalPath1) == 0))
+	if ((_file_exist(finalPath1) == 0))
 		return (finalPath1);
 
 	finalPath2 = _strcat(path2, tokens[0]);
-	if ((if_file_exists(finalPath2) == 0))
+	if ((_file_exist(finalPath2) == 0))
 		return (finalPath2);
 
 	return (NULL);
@@ -42,7 +42,7 @@ char *path_builder(char **tokens)
 /**
  * execute2 - Executes a file.
  * @tokens: Split string into tokens from stdin.
- * @path: Path from path_builder function.
+ * @path: Path from _build_path function.
  * @args: Program arguments.
  * Return: 0 - on success, else - 1.
  */

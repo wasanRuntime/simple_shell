@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
 		if (_strcmp(tokens[0], "exit") == 0)
 		{
-			_exitSimpleShell(tokens, line);
+			_exit_simple_shell(tokens, line);
 		}
 		else
 		{

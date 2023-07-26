@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
-  *_printenv - Prints variables in current
+  *_print_myenv - Prints variables in current
   * working environment.
   * Return: void.
   */
-void _printenv(void)
+void _print_myenv(void)
 {
 	int i = 0;
 
@@ -17,11 +17,11 @@ void _printenv(void)
 }
 
 /**
- * _isBuiltIn - Checks if token is a built in.
+ * _in_built - Checks if token is a built in.
  * @str: Pointer to string to check.
  * Return: 0 if true else 1.
  */
-int _isBuiltIn(char *str)
+int _in_built(char *str)
 {
 	/* check if strings are equal */
 	if ((_strcmp(str, "env")) == 0)
@@ -39,16 +39,16 @@ int _isBuiltIn(char *str)
 }
 
 /**
- * _executeBuiltIn - Executes a builtin Function.
+ * _execute_in_built - Executes a builtin Function.
  * @tokens: Double pointer to tokens.
  * Return: 0 if success.
  */
-int _executeBuiltIn(char **tokens)
+int _execute_in_built(char **tokens)
 {
 	/* check if first token is equal to string */
 	if ((_strcmp(*tokens, "env")) == 0)
 	{
-		_printenv();
+		_print_myenv();
 		return (0);
 	}
 	if ((_strcmp(*tokens, "setenv")) == 0)
@@ -68,7 +68,7 @@ int _executeBuiltIn(char **tokens)
 		/*check for var_name to change*/
 		if (tokens[1])
 		{
-			_unsetenv(tokens[1]);
+			un_set_env(tokens[1]);
 			return (0);
 		}
 		/*else an error msg*/
@@ -81,13 +81,13 @@ int _executeBuiltIn(char **tokens)
 	return (1);
 }
 /**
- * _exitSimpleShell - Exits the shell
+ * _exit_simple_shell - Exits the shell
  * and frees memory.
  * @tokens: Double pointer to words split from line.
  * @line: Pointer to string got using getLine().
  * Return: void.
  */
-void _exitSimpleShell(char **tokens, char *line)
+void _exit_simple_shell(char **tokens, char *line)
 {
 	int status;
 
