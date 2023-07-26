@@ -1,6 +1,34 @@
 #include "main.h"
 
 /**
+ * _in_built - Checks if token is a built in.
+ * @str: Pointer to string to check.
+ * Return: 0 if true else 1.
+ */
+int _in_built(char *str)
+{
+	/* Compare the given token with*/
+	/*   each of the built-in commands*/
+	if ((_strcmp(str, "env")) == 0)
+	{
+		return (0);
+	}
+	if ((_strcmp(str, "setenv")) == 0)
+	{
+		return (0);
+	}
+	if ((_strcmp(str, "unsetenv")) == 0)
+	{
+		return (0);
+	}
+	if ((_strcmp(str, "exit")) == 0)
+	{
+		return (0);
+	}
+	return (1);
+}
+
+/**
   *_print_myenv - Prints variables in current
   * working environment.
   * Return: void.
@@ -14,28 +42,6 @@ void _print_myenv(void)
 		_puts(environ[i]);
 		i++;
 	}
-}
-
-/**
- * _in_built - Checks if token is a built in.
- * @str: Pointer to string to check.
- * Return: 0 if true else 1.
- */
-int _in_built(char *str)
-{
-	/* check if strings are equal */
-	if ((_strcmp(str, "env")) == 0)
-	{
-		return (0);
-	}
-	if ((_strcmp(str, "exit")) == 0)
-		return (0);
-	if ((_strcmp(str, "setenv")) == 0)
-		return (0);
-	if ((_strcmp(str, "unsetenv")) == 0)
-		return (0);
-	return (1);
-
 }
 
 /**
