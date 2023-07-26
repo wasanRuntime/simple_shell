@@ -71,7 +71,6 @@ int _execute_in_built(char **tokens)
 	}
 	if (_strcmp(*tokens, "unsetenv") == 0)
 	{
-		/*check for var_name to change*/
 		if (tokens[1])
 		{
 			un_set_env(tokens[1]);

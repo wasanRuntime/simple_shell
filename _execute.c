@@ -12,12 +12,10 @@ int _execute(char **tokens, char *args)
 	pid_t child_pid;
 	int status;
 	char *path;
+
 	/* check if first token is a built in */
 	if (_in_built(*tokens) == 0)
-	{
-		status = _execute_in_built(tokens);
-		return (status);
-	}
+
 	/* if path wasn't entered e.g ls, pwd, etc */
 	path = _build_path(tokens);
 	if (path != NULL)
@@ -25,6 +23,12 @@ int _execute(char **tokens, char *args)
 		status = execute2(tokens, path, args);
 		return (status);
 	}
+
+	/* check if first token is a built in */
+	if (_in_built(*tokens) == 0)
+		status = _execute_in_built(tokens);
+		return (status);
+
 	/* if path was entered e.g /bin/ls */
 	child_pid = fork();
 	if (child_pid == -1)
@@ -46,6 +50,7 @@ int _execute(char **tokens, char *args)
 		}
 		return (EXIT_SUCCESS);
 	}
+
 	wait(&status);
 	return (0);
 }

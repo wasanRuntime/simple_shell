@@ -16,7 +16,9 @@ int main(int argc, char *argv[])
 	(void)argc;
 
 	signal(SIGINT, ctrlc);
+
 	Status = 0;
+
 	while (Status == 0)
 	{
 		prompt();
@@ -28,6 +30,7 @@ int main(int argc, char *argv[])
 			free(line);
 			continue;
 		}
+
 		tokens = _strtotokens(line);
 		if (tokens[0] == NULL)
 		{
@@ -44,6 +47,7 @@ int main(int argc, char *argv[])
 		{
 			Status =  _execute(tokens, argv[0]);
 		}
+
 		free(line);
 		free(tokens);
 	}

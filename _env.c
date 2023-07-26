@@ -15,6 +15,7 @@ int _setenv(char *var_name, char *var_value)
 
 	name_len = _strlen(var_name);
 	i = 0;
+
 	/*updating an existing variable*/
 	while (environ[i])
 	{
@@ -31,6 +32,7 @@ int _setenv(char *var_name, char *var_value)
 		}
 		i++;
 	}
+
 	/*adding a variable that never existed before*/
 	var_new = buid_var(var_name, var_value);
 	free(environ[i]);

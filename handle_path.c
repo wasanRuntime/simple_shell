@@ -1,19 +1,5 @@
 #include "main.h"
 
-
-/**
- * _file_exist - Checks file status.
- * @s: Pointer to file name.
- * Return: 0 if success, else non zero.
- */
-int _file_exist(char *s)
-{
-	struct stat st;
-
-	return (stat(s, &st));
-}
-
-
 /**
  * _build_path - Constructs a path to binaries.
  * @tokens: Double pointer to tokens.
@@ -37,6 +23,18 @@ char *_build_path(char **tokens)
 		return (finalPath2);
 
 	return (NULL);
+}
+
+/**
+ * _file_exist - Checks file status.
+ * @s: Pointer to file name.
+ * Return: 0 if success, else non zero.
+ */
+int _file_exist(char *s)
+{
+	struct stat st;
+
+	return (stat(s, &st));
 }
 
 /**
