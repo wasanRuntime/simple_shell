@@ -20,7 +20,6 @@ char *read_line(void)
 	if (chars == EOF)
 	{
 		free(line);
-		write(STDOUT_FILENO, "\n", 2);
 		exit(0);
 	}
 	if (line == NULL)
