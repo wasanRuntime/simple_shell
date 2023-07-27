@@ -85,34 +85,20 @@ int _execute_in_built(char **tokens)
 	/* because of _isBuiltin() if check in _execute() */
 	return (1);
 }
-/**
- * _exit_simple_shell - Exits the shell
- * and frees memory.
- * @tokens: Double pointer to words split from line.
- * @line: Pointer to string got using getLine().
- * Return: void.
- */
-void _exit_simple_shell(char **tokens, char *line)
-{
-	int status;
 
-	if (tokens[1] != NULL)
+/**
+ * _pathlen - Returns length of a string.
+ * @s: Pointer to string.
+ * Return: Length of s.
+ */
+int _pathlen(char *s)
+{
+	int ex;
+
+	ex = 0;
+	while (s[ex] != '\0')
 	{
-		status = atoi(tokens[1]);
-		if (status >= 0)
-		{
-			free(line);
-			free(tokens);
-			exit(status);
-		}
-		write(STDERR_FILENO, "Exit: illegal exit status: ", 28);
-		write(STDERR_FILENO, tokens[1], 1);
-		write(STDERR_FILENO, "\n", 1);
+		ex++;
 	}
-	else
-	{
-		free(line);
-		free(tokens);
-		exit(0);
-	}
+	return (ex);
 }

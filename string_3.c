@@ -1,20 +1,6 @@
 #include "main.h"
 
 /**
- *ctrlc - Control C handler.
- *@signum: The signal number received.
- *
- *Return: Void.
- */
-void ctrlc(int signum)
-{
-	(void)signum;
-
-	exit(0);
-	write(STDOUT_FILENO, "\n#cisfun$ ", 10);
-}
-
-/**
  * is_delim - Check if char is equal to delim.
  * @c: character.
  * @delim: " "
